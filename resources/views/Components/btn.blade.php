@@ -1,0 +1,1 @@
+<button class="btn-confirmar" style="backgorund-color: {{$cor}}"></button>
