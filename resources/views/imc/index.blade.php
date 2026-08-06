@@ -8,7 +8,7 @@
                 <p>Insira sua altura</p>
                 <input type="text" name="altura">
                 <button type="submit">Calcular</button>
-                <x-bnt></x-bnt>
+
             </div>
         </form>
 

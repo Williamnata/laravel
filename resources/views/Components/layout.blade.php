@@ -11,10 +11,8 @@
         <header>
 
                 <nav>
-                    <h1>Página Inicial</h1>
-                    <h1>footer</h1>
-                    <h1>botao2</h1>
-                    <h1>Página Inicial</h1>
+                    <a class="" aria-current="page" href="/">Calcule o IMC <br></a>
+                    <a class="" aria-current="page" href="/dashboard">Dashboard</a>
 
                 </nav>
         </header>        

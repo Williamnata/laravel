@@ -3,6 +3,7 @@
         <form method="post">
             <div>
                 <h1>Descubra seu dashboard</h1>
+                <x-btn/>
             </div>
 
         </form>
