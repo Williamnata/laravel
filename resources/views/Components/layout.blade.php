@@ -21,8 +21,6 @@
     {{$slot}}
     
     <br><br><br>
-    <footer>
-        ESSE É O FOOTER
-    </footer>
+
 </body>
 </html>

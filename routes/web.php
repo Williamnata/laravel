@@ -9,5 +9,6 @@ Route::get('/dashboard',[DashboardController::class,'index'])->name('imc.dashboa
 
 Route::get('/',[ImcController::class, 'index'])->name('imc.index');
 
-
 Route::post('/calcular',[ImcController::class, 'calcularimc'])->name('imc.calcularimc');
+
+Route::post('/salvar',[ImcController::class, 'store'])->name('imc.salvar');

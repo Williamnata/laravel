@@ -11,44 +11,60 @@ class ImcController extends Controller
     public function index()
     {
         $resultado = [
-           "imc" =>  "Aguardando valores ",
-            "faixa" =>  "Aguardando valores"   
+            "imc" =>  "Aguardando valores ",
+            "faixa" =>  "Aguardando valores"
         ];
-    return view('imc.indec')->with('resultado',$resultado);
-        }
+        return view('imc.index')->with('resultado', $resultado);
+    }
 
-}
-
-class ImcController
-{
-    public function CalculoIMC($peso, $altura)
+    public function calcularimc(Request $request)
     {
-        $resultado = [];
+        $post = $request->all();
 
-        if (isset($peso) && isset($altura)) {
+        $resultado["peso"] = $post["peso"];
+        $resultado["altura"] = $post["altura"];
 
-            if ($peso > 0 && $altura > 0) {
-                $imc = $peso / ($altura * $altura);
+        $imc = $resultado["peso"] / ($resultado["altura"] ** 2);
 
-                $resultado["imc"] = $imc;
-
-                if ($imc < 18.5) {
-                    $resultado["faixa"] =  "Abaixo do peso.";
-                } elseif ($imc >= 18.5 && $imc < 24.9) {
-                    $resultado["faixa"] = "Peso normal";
-                } elseif ($imc >= 25.0 && $imc < 29.9) {
-                    $resultado["faixa"] = "Sobrepeso";
-                } elseif ($imc >= 30.0 && $imc < 34.9) {
-                    $resultado["faixa"] = "Obesidade grau 1";
-                } elseif ($imc >= 35.0 && $imc < 39.9) {
-                    $resultado["faixa"] = "Obesidade grau 2";
-                } elseif ($imc >= 40.0) {
-                    $resultado["faixa"] = "TaPoxa menor me ajuda YODA";
-                }
-            }
+        $resultado["imc"] = round($imc, 2);
+        if ($imc < 18.5) {
+            $resultado["faixa"] =  "abaixo";
+        } elseif ($imc >= 18.5 && $imc < 24.9) {
+            $resultado["faixa"] = "normal";
+        } elseif ($imc >= 25.0 && $imc < 29.9) {
+            $resultado["faixa"] = "obesidade grau 1";
+        } elseif ($imc >= 30.0 && $imc < 34.9) {
+            $resultado["faixa"] = "obesidade grau 2";
+        } elseif ($imc >= 35.0 && $imc < 39.9) {
+            $resultado["faixa"] = "obesidade grau 3";
+        } elseif ($imc >= 40.0) {
+            $resultado["faixa"] = "TaPoxa menor me ajuda YODA";
         }
 
-        return view('imc.index');
-        ->with('resultado',$resultado);
+
+        return view('imc.index')
+            ->with('resultado', $resultado);
+    }
+
+    public function store(Request $request)
+    {
+        $data = $request->all();
+
+
+        $peso = $data["peso"];
+        $altura = $data["altura"];
+        $faixa = $data["faixa"];
+
+        $idFaixa = FaixaModel::where('categoria', $faixa)->value('idFaixa');
+
+        $imcModel = new ImcModel();
+
+        $imcModel->altura = $altura;
+        $imcModel->peso = $peso;
+        $imcModel->idFaixa = $idFaixa;
+
+        $imcModel->save();
+
+        return to_route('imc.index');
     }
 }
