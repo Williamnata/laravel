@@ -8,3 +8,6 @@ use App\Http\Controllers\DashboardController;
 Route::get('/dashboard',[DashboardController::class,'index'])->name('imc.dashboard');
 
 Route::get('/',[ImcController::class, 'index'])->name('imc.index');
+
+
+Route::post('/calcular',[ImcController::class, 'calcularimc'])->name('imc.calcularimc');

@@ -11,12 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('imc', function (Blueprint $table) {
-            $table -> id();
-            $table->string('nome');
-            $table->double('peso');
-            $table->double('altura');
-            $table->timestamps();
+        Schema::create('faixas', function (Blueprint $table) {
+            $table->id('idFaixa');
+            $table->String('categoria');
+
+            $table->primary("idFaixa");
         });
     }
 
@@ -25,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        //24,
     }
 };

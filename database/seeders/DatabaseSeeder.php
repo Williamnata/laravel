@@ -5,21 +5,27 @@ namespace Database\Seeders;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\FaixaModel;
 
 class DatabaseSeeder extends Seeder
 {
-    use WithoutModelEvents;
-
-    /**
-     * Seed the application's database.
-     */
+ 
     public function run(): void
-    {
-        // User::factory(10)->create();
-
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
+  { 
+       $categorias = [
+        'abaixo',
+        'normal',
+        'obesidade grau 1',
+        'obesidade grau 2',
+        'obesidade grau 3'
+    ];
+    
+    foreach($categorias as $categoria) {
+        FaixaModel::create([
+            'categoria' => $categoria
         ]);
     }
+        
+    }
+
 }
