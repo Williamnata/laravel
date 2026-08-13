@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,19 +9,21 @@
 </head>
 
 <body>
-        <header>
+    <header >
 
-                <nav>
-                    <a class="" aria-current="page" href="/">Calcule o IMC <br></a>
-                    <a class="" aria-current="page" href="/dashboard">Dashboard</a>
+        <nav class="font-sans flex gap-4">
+            <p>Descubra seu peso</p>
+            <a class="" aria-current="page" href="/">Calcule o IMC <br></a>
+            <a class="" aria-current="page" href="/dashboard">Dashboard</a>
 
-                </nav>
-        </header>        
+        </nav>
+    </header>
 
-  
+
     {{$slot}}
-    
+
     <br><br><br>
 
 </body>
+
 </html>

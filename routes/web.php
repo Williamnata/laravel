@@ -12,3 +12,8 @@ Route::get('/',[ImcController::class, 'index'])->name('imc.index');
 Route::post('/calcular',[ImcController::class, 'calcularimc'])->name('imc.calcularimc');
 
 Route::post('/salvar',[ImcController::class, 'store'])->name('imc.salvar');
+
+Route::put('/dashboard/update{id}', [DashboardController::class,'update'])->name('dash.update');
+
+Route::delete('/dashboard/delete/{id}', [DashboardController::class,'destroy'])->name('dash.delete');
+
